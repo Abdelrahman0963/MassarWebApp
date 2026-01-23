@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import { Geist, Geist_Mono, Cairo } from "next/font/google";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-en",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const arabicFont = Cairo({
+  variable: "--font-ar",
+  subsets: ["arabic"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+            ${geistSans.variable}
+            ${arabicFont.variable}
+            antialiased
+            font-sans
+          `}
       >
         <div className="grid min-h-screen grid-cols-[1fr_313px]">
           <main className="p-6">{children}</main>
