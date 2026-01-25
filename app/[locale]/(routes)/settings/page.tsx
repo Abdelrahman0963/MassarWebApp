@@ -1,9 +1,9 @@
 import React from 'react'
 
-function page() {
+const page = () => {
   return (
     <div>
-      <h1>dd</h1>
+      "Settings Page"
     </div>
   )
 }

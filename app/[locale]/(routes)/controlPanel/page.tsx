@@ -1,11 +1,11 @@
 import React from 'react'
 
-const PromocodePage = () => {
+const page = () => {
   return (
     <div>
-      
+      "Categories Page"
     </div>
   )
 }
 
-export default PromocodePage
+export default page

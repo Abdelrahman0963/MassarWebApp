@@ -1,0 +1,19 @@
+{
+   "changeLanguage": "English",
+   "navbar": {
+      "user": "Admin",
+      "board": "Admin Dashboard",
+      "Products": "Products",
+      "orders": "Orders",
+      "promocodes": "Promo Codes",
+      "shippingZone": "Shipping",
+      "settings": "Settings",
+      "logout": "Logout"
+   },
+   "graph":{
+      "TopSelling": "Top Selling",
+      "Overview":"Overview of top selling",
+      "categories": "categories",
+      "products": "products"
+   }
+}

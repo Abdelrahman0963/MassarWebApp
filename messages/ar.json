@@ -1,0 +1,21 @@
+{
+   "changeLanguage": "العربية",
+   "navbar": {
+      "user": "مسؤول",
+      "board": "لوحة التحكم الإدارية",
+      "Products": "المنتجات",
+      "orders": "الطلبات",
+      "promocodes": "أكواد الخصم",
+      "shipping": "الشحن",
+      "settings": "الإعدادات",
+      "shippin": "الشحن",
+      "logout": "تسجيل الخروج"
+   }
+   ,
+   "graph":{
+      "TopSelling": "الأكثر مبيعًا",
+      "Overview":"نظرة عامة على الأكثر مبيعًا",
+      "categories": "الفئات",
+      "products": "المنتجات"
+   }
+}
