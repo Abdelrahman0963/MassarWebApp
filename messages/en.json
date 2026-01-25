@@ -14,6 +14,8 @@
       "TopSelling": "Top Selling",
       "Overview":"Overview of top selling",
       "categories": "categories",
-      "products": "products"
+      "products": "products",
+      "ByCategory": "By Category",
+      "ByProduct": "By Product"
    }
 }

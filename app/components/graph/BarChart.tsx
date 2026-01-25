@@ -96,7 +96,7 @@ const SalesChart = () => {
                                 color: viewMode === "category" ? "#fff" : "#000",
                             }}
                         >
-                            By Category
+                            {t('graph.ByCategory')}
                         </button>
 
                         <button
@@ -111,7 +111,7 @@ const SalesChart = () => {
                                 color: viewMode === "product" ? "#fff" : "#000",
                             }}
                         >
-                            By Product
+                            {t('graph.ByProduct')}
                         </button>
                     </div>
                     <div className="">

@@ -16,6 +16,8 @@
       "TopSelling": "الأكثر مبيعًا",
       "Overview":"نظرة عامة على الأكثر مبيعًا",
       "categories": "الفئات",
-      "products": "المنتجات"
+      "products": "المنتجات",
+      "ByCategory": "حسب الفئة",
+      "ByProduct": "حسب المنتج"
    }
 }
