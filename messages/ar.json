@@ -19,5 +19,9 @@
       "products": "المنتجات",
       "ByCategory": "حسب الفئة",
       "ByProduct": "حسب المنتج"
+   },
+   "stockAlert":{
+      "title": "تنبيه نقص المخزون",
+      "viewAll": "عرض الكل"
    }
 }

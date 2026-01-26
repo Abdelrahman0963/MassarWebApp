@@ -1,9 +1,12 @@
 import React from 'react'
-import SalesChart from '../components/graph/BarChart';
+import SalesChart from '../components/graph/BarChart'
+import Stockalert from '../components/stockalert/Stockalert'
+
 function page() {
   return (
-    <div>
+    <div className="px-6 py-4">
       <SalesChart />
+      <Stockalert />
     </div>
   )
 }

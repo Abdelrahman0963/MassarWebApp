@@ -17,5 +17,9 @@
       "products": "products",
       "ByCategory": "By Category",
       "ByProduct": "By Product"
+   },
+   "stockAlert":{
+      "title": "Stock shortage alert",
+      "viewAll": "View All"
    }
 }

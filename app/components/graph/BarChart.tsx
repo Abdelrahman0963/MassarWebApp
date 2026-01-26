@@ -80,7 +80,7 @@ const SalesChart = () => {
     return (
         <>
             <div
-                className="w-full p-4 bg-[#E5F3FF] mt-1.5 rounded-xl"
+                className="w-full p-4 bg-[#E5F3FF] mt-4 rounded-xl"
             >
                 <div className="flex items-center justify-between mb-3">
                     <div className="flex gap-2 mb-3">

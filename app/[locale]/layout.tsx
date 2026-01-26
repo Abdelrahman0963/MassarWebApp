@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Geist, Cairo } from "next/font/google";
+import { Cairo, Poppins } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import LayoutProvider from "../components/LayoutProvider";
 import { routing } from "@/i18n/routing";
 
-const geistSans = Geist({
-  variable: "--font-en",
+const PoppinsFont = Poppins({
+  variable: "--font-pp",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
-
 const arabicFont = Cairo({
   variable: "--font-ar",
   subsets: ["arabic"],
@@ -38,11 +38,10 @@ export default async function RootLayout({
     <html lang={locale} dir={hasLocale(["ar"], locale) ? "rtl" : "ltr"}>
       <body
         className={`
-          ${geistSans.variable}
-          ${arabicFont.variable}
-          antialiased
-          font-sans
-        `}
+    ${PoppinsFont.variable}
+    ${arabicFont.variable}
+    antialiased
+  `}
       >
         <NextIntlClientProvider messages={messages || {}}>
           <LayoutProvider>
