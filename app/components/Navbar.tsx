@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Cart,
   ControlPanel,
@@ -16,7 +17,29 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LangSwitch from "./NavBtn/LangSwitch";
 
+// Arrow Icon Component
+const ArrowIcon = ({ isCollapsed, isRTL }) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`transition-transform duration-300 ${
+      isCollapsed 
+        ? (isRTL ? "rotate-180" : "rotate-0")
+        : (isRTL ? "rotate-0" : "rotate-180")
+    }`}
+  >
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
+);
+
 const Navbar = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
   const locale = pathname?.split("/")[1];
   const t = useTranslations();
@@ -59,26 +82,52 @@ const Navbar = () => {
   return (
     <aside
       className={`
-        h-screen w-70 bg-[#CCE7FF] border-r
+        h-screen bg-[#CCE7FF] border-r
         flex flex-col
+        transition-all duration-300
+        ${isCollapsed ? "w-20" : "w-70"}
         ${isRTL ? "border-l border-r-0" : ""}
       `}
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* ===== Header ===== */}
-      <div className="flex items-center gap-3 px-6 py-5 border-b">
-        <div className="w-10 h-10 flex items-center justify-center rounded-md bg-blue-100">
-          <DefaultLogo />
-        </div>
+      <div className={`flex items-center gap-3 px-6 py-5 border-b ${isCollapsed ? "justify-center px-2" : ""}`}>
+        {!isCollapsed ? (
+          <>
+            <div className="w-10 h-10 flex items-center justify-center rounded-md bg-blue-100">
+              <DefaultLogo />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-semibold text-sm">
+                {t("navbar.board")}
+              </span>
+              <span className="text-xs text-slate-500">
+                {t("navbar.user")}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div className="w-10 h-10 flex items-center justify-center rounded-md bg-blue-100">
+            <DefaultLogo />
+          </div>
+        )}
+      </div>
 
-        <div className="flex flex-col">
-          <span className="font-semibold text-sm">
-            {t("navbar.board")}
-          </span>
-          <span className="text-xs text-slate-500">
-            {t("navbar.user")}
-          </span>
-        </div>
+      {/* ===== Toggle Button ===== */}
+      <div className={`px-4 py-3 ${isCollapsed ? "px-2" : ""}`}>
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className={`
+            flex items-center justify-center
+            w-full p-2 rounded-lg
+            bg-blue-100 hover:bg-blue-200
+            text-blue-600
+            transition-all duration-200
+          `}
+          title={isCollapsed ? "توسيع القائمة" : "تصغير القائمة"}
+        >
+          <ArrowIcon isCollapsed={isCollapsed} isRTL={isRTL} />
+        </button>
       </div>
 
       {/* ===== Nav ===== */}
@@ -99,10 +148,14 @@ const Navbar = () => {
                       : "text-slate-600 hover:bg-slate-100"
                     }
                     ${isRTL ? "flex-row-reverse text-right" : ""}
+                    ${isCollapsed ? "justify-center px-2" : ""}
                   `}
+                  title={isCollapsed ? link.label : ""}
                 >
                   <span className="text-lg">{link.icon}</span>
-                  <span className="text-sm">{link.label}</span>
+                  {!isCollapsed && (
+                    <span className="text-sm">{link.label}</span>
+                  )}
                 </Link>
               </li>
             );
@@ -111,22 +164,39 @@ const Navbar = () => {
       </nav>
 
       {/* ===== Footer ===== */}
-      <div className="border-t px-4 py-4 space-y-3">
-        <LangSwitch />
-
-        <button
-          className="
-            w-full flex items-center justify-center gap-2
-            px-4 py-2 rounded-lg
-            text-red-600 border border-red-200
-            hover:bg-red-50
-            active:bg-red-600 active:text-white
-            transition
-          "
-        >
-          <Logout />
-          <span className="text-sm">تسجيل الخروج</span>
-        </button>
+      <div className={`border-t px-4 py-4 space-y-3 ${isCollapsed ? "px-2" : ""}`}>
+        {!isCollapsed ? (
+          <>
+            <LangSwitch />
+            <button
+              className="
+                w-full flex items-center justify-center gap-2
+                px-4 py-2 rounded-lg
+                text-red-600 border border-red-200
+                hover:bg-red-50
+                active:bg-red-600 active:text-white
+                transition
+              "
+            >
+              <Logout />
+              <span className="text-sm">تسجيل الخروج</span>
+            </button>
+          </>
+        ) : (
+          <button
+            className="
+              w-full flex items-center justify-center
+              p-2 rounded-lg
+              text-red-600 border border-red-200
+              hover:bg-red-50
+              active:bg-red-600 active:text-white
+              transition
+            "
+            title="تسجيل الخروج"
+          >
+            <Logout />
+          </button>
+        )}
       </div>
     </aside>
   );
