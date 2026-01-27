@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import {
   Cart,
@@ -17,8 +16,12 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LangSwitch from "./NavBtn/LangSwitch";
 
+interface ArrowIconProps {
+  isCollapsed: boolean;
+  isRTL: boolean;
+}
 // Arrow Icon Component
-const ArrowIcon = ({ isCollapsed, isRTL }) => (
+const ArrowIcon = ({ isCollapsed, isRTL }: ArrowIconProps) => (
   <svg
     width="20"
     height="20"
@@ -28,11 +31,10 @@ const ArrowIcon = ({ isCollapsed, isRTL }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className={`transition-transform duration-300 ${
-      isCollapsed 
-        ? (isRTL ? "rotate-180" : "rotate-0")
-        : (isRTL ? "rotate-0" : "rotate-180")
-    }`}
+    className={`transition-transform duration-300 ${isCollapsed
+      ? (isRTL ? "rotate-180" : "rotate-0")
+      : (isRTL ? "rotate-0" : "rotate-180")
+      }`}
   >
     <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
@@ -83,8 +85,9 @@ const Navbar = () => {
     <aside
       className={`
         h-screen bg-[#CCE7FF] border-r
-        flex flex-col
+        lg:flex flex-col
         transition-all duration-300
+        hidden
         ${isCollapsed ? "w-20" : "w-70"}
         ${isRTL ? "border-l border-r-0" : ""}
       `}
